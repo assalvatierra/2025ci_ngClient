@@ -1,0 +1,5 @@
+{
+  "apiUrl": "${API_URL}",
+  "appName": "${APP_NAME}",
+  "production": ${PRODUCTION}
+}

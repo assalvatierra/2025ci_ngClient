@@ -1,4 +1,8 @@
-<p>sampleapi works!</p>
+<div>
+  <h2>{{ configService.appName }}</h2>
+  <p><strong>API URL:</strong> {{ configService.apiUrl }}</p>
+  <p><strong>Production Mode:</strong> {{ configService.isProduction ? 'Yes' : 'No' }}</p>
+</div>
 
 <div>
   <button (click)="sampleHttpGet()">Call Weather Forecast API</button>

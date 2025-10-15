@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  angular-client:
+    build: .
+    ports:
+      - "4200:80"
+    environment:
+      - API_URL=http://localhost:5131
+      - APP_NAME=Angular Client (Docker Compose)
+      - PRODUCTION=false
+    depends_on:
+      - api-server
+
+  api-server:
+    build: ../2025ci_ApiServer
+    ports:
+      - "5131:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
