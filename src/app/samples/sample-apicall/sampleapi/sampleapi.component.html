@@ -1,0 +1,10 @@
+<p>sampleapi works!</p>
+
+<div>
+  <button (click)="sampleHttpGet()">Call Weather Forecast API</button>
+</div>
+
+<div *ngIf="SampleApiResult">
+  <h3>API Result:</h3>
+  <pre>{{ SampleApiResult }}</pre>
+</div>
