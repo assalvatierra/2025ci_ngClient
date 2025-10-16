@@ -57,4 +57,23 @@ export class SampleapiComponent {
         }
       });
   }
+
+
+  testDatabase() {
+    this.SampleApiResult = 'Testing connectivity...';
+
+    // Simple ping test to the base URL
+    this.http.post(`${this.configService.apiUrl}/Api/Database/`, { responseType: 'text' })
+      .subscribe({
+        next: (data) => {
+          this.SampleApiResult = `✅ Server is reachable at ${this.configService.apiUrl}\nResponse: ${data}`;
+        },
+        error: (error) => {
+          console.error('Connectivity test failed:', error);
+          this.SampleApiResult = `❌ Cannot reach server at ${this.configService.apiUrl}\nError: ${error.status || 'Network error'}\nMessage: ${error.message || 'Unknown error'}`;
+        }
+      });
+  }
+
+
 }
