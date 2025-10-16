@@ -15,7 +15,7 @@ export class SampleapiComponent {
   constructor(private http: HttpClient, public configService: ConfigService) {}
 
   sampleHttpGet() {
-    this.SampleApiResult = `Connecting to: ${this.configService.apiUrl}/weatherforecast`;
+    this.SampleApiResult = `Trying to call API: ${this.configService.apiUrl}/weatherforecast`;
 
     this.http.get(`${this.configService.apiUrl}/weatherforecast`, { responseType: 'text' })
       .subscribe({
