@@ -46,7 +46,7 @@ export class SampleapiComponent {
     this.SampleApiResult = 'Testing connectivity...';
 
     // Simple ping test to the base URL
-    this.http.get(`${this.configService.apiUrl}/api/test-api-call`)
+    this.http.get(`${this.configService.apiUrl}/Api/Database/`, { responseType: 'text' })
       .subscribe({
         next: (data) => {
           this.SampleApiResult = `✅ Server is reachable at ${this.configService.apiUrl}\nResponse: ${data}`;
