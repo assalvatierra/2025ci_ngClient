@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './welcome-component.component.css'
 })
 export class WelcomeComponentComponent {
-  title: string = 'Welcome to Our Application';
+  title: string = 'Welcome to Our Application 2025';
 
   constructor() { }
 
