@@ -12,7 +12,7 @@ export class WelcomeComponentComponent {
   constructor() { }
 
   public getWelcomeMessage(): string {
-    return this.title + ' - Enjoy your stay!';
+    return this.title;
   }
 
 
