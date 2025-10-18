@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WelcomeComponentComponent } from './welcome-component.component';
 
-describe('WelcomeComponentComponent', () => {
+describe('WelcomeComponent', () => {
   let component: WelcomeComponentComponent;
   let fixture: ComponentFixture<WelcomeComponentComponent>;
 
@@ -20,4 +20,15 @@ describe('WelcomeComponentComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return the correct welcome message', () => {
+    const expectedMessage = 'Welcome to Our Application';
+
+    component.title = expectedMessage;
+    const message = component.getWelcomeMessage();
+
+    expect(message).toBe(expectedMessage);
+
+  });
+
 });

@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class WelcomeComponentComponent {
   title: string = 'Welcome to Our Application';
+
+  constructor() { }
+
+  public getWelcomeMessage(): string {
+    return this.title + ' - Enjoy your stay!';
+  }
+
+
 }
