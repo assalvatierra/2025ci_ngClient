@@ -75,5 +75,44 @@ export class SampleapiComponent {
       });
   }
 
+// ...existing code...
+
+testSendRabbitMqEvent() {
+  // Sample RabbitMQ Event - RabbitMqController
+  this.SampleApiResult = 'Testing event publishing...';
+
+  // Create a sample event payload
+  const eventPayload = {
+    message: 'Test message from Angular client',
+    timestamp: new Date().toISOString(),
+    source: 'angular-client'
+  };
+
+  this.http.post(`${this.configService.apiUrl}/Api/RabbitMq/`, eventPayload, {
+    responseType: 'text'
+    })
+    .subscribe({
+      next: (data) => {
+        this.SampleApiResult = `✅ Event published successfully at ${this.configService.apiUrl}\nResponse: ${data}`;
+      },
+      error: (error) => {
+        console.error('Event publishing failed:', error);
+        let errorMessage = 'Failed to publish event';
+
+        if (error.status === 0) {
+          errorMessage = `Cannot connect to RabbitMQ service. Make sure the API server and RabbitMQ are running.\n\nDebugging info:\n- Check if API container is running\n- Verify RabbitMQ container is running\n- Check network connectivity`;
+        } else if (error.status === 404) {
+          errorMessage = 'RabbitMQ endpoint not found (404). Check if /Api/RabbitMq/ endpoint exists.';
+        } else if (error.status === 500) {
+          errorMessage = `Server error (${error.status}): Possible RabbitMQ connection issue`;
+        } else {
+          errorMessage = `HTTP Error ${error.status}: ${error.message}`;
+        }
+
+        this.SampleApiResult = `❌ ${errorMessage}`;
+      }
+    });
+  }
+
 
 }
